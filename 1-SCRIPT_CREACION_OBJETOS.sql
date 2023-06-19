@@ -423,7 +423,7 @@ AFTER UPDATE ON maquinas
 FOR EACH ROW
 BEGIN
   INSERT INTO registration_machines (Id_maquina, Tipo_operacion, Fecha_registro)
-  VALUES (NEW.Id, 'INSERTE', CURDATE());
+  VALUES (NEW.Id, 'UPDATE', CURDATE());
 END//
 
 #ELIMINACION---------------------
@@ -433,7 +433,7 @@ AFTER DELETE ON maquinas
 FOR EACH ROW
 BEGIN
   INSERT INTO registration_machines (Id_maquina, Tipo_operacion, Fecha_registro)
-  VALUES (OLD.Id, 'INSERTE', CURDATE());
+  VALUES (OLD.Id, 'DELETE', CURDATE());
 END$$
 
 #REGISTROS PARA TABLA "EMPLEADOS"------------
