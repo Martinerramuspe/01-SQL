@@ -1,7 +1,8 @@
 CREATE DATABASE FACULTAD;
+USE FACULTAD;
 -- CREACION TABLAS SIN FOREIGN KEY_______________________________________________________
 CREATE TABLE IF NOT EXISTS `FACULTAD`.`Estudiantes` (
-  `Estudiante_ID` INT NULL AUTO_INCREMENT,
+  `Estudiante_ID`INT NOT NULL AUTO_INCREMENT,
   `Nombre` VARCHAR(45) NOT NULL,
   `Apellido` VARCHAR(45) NOT NULL,
   `Fecha_nacimiento` DATE NOT NULL,
@@ -121,4 +122,9 @@ CREATE TABLE IF NOT EXISTS `FACULTAD`.`Prestamos_libros` (
   FOREIGN KEY (`Estudiante_ID`) REFERENCES `FACULTAD`.`Estudiantes` (`Estudiante_ID`),
   FOREIGN KEY (`Libro_ID`) REFERENCES `FACULTAD`.`Biblioteca` (`Libro_ID`)
 );
+
+-- CREACION DE AUDITORIAS________________________________________________________________________________
+-- CREACION DE VISTAS_____________________________________________________________________________
+
+
 
