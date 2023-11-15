@@ -1,8 +1,8 @@
 CREATE DATABASE FACULTAD;
 USE FACULTAD;
 -- CREACION TABLAS SIN FOREIGN KEY_______________________________________________________
-CREATE TABLE IF NOT EXISTS `FACULTAD`.`Estudiantes` (
-  `Estudiante_ID`INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `FACULTAD`.`ESTUDIANTES` (
+  `Estudiante_ID` INT NOT NULL AUTO_INCREMENT,
   `Nombre` VARCHAR(45) NOT NULL,
   `Apellido` VARCHAR(45) NOT NULL,
   `Fecha_nacimiento` DATE NOT NULL,
@@ -10,9 +10,8 @@ CREATE TABLE IF NOT EXISTS `FACULTAD`.`Estudiantes` (
   `Correo` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Estudiante_ID`),
   UNIQUE INDEX (`Correo`)
-);
-
-CREATE TABLE IF NOT EXISTS `FACULTAD`.`Profesores` (
+  );
+CREATE TABLE IF NOT EXISTS `FACULTAD`.`PROFESORES` (
   `Profesor_ID` INT NOT NULL AUTO_INCREMENT,
   `Nombre` VARCHAR(45) NOT NULL,
   `Apellido` VARCHAR(45) NOT NULL,
@@ -20,111 +19,112 @@ CREATE TABLE IF NOT EXISTS `FACULTAD`.`Profesores` (
   `Direccion` VARCHAR(45) NOT NULL,
   `Correo` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Profesor_ID`),
-  UNIQUE INDEX (`Correo`) 
-);
-
-CREATE TABLE IF NOT EXISTS `FACULTAD`.`Carreras` (
-  `Carrera_ID` INT NOT NULL AUTO_INCREMENT,
-  `Nombre_carrera` VARCHAR(45) NOT NULL,
-  `Descripticion` VARCHAR(80) NOT NULL,
-  PRIMARY KEY (`Carrera_ID`)
-);
-
-CREATE TABLE IF NOT EXISTS `FACULTAD`.`Departamento` (
+  UNIQUE INDEX (`Correo`)
+  );
+CREATE TABLE IF NOT EXISTS `FACULTAD`.`DEPARTAMENTOS` (
   `Departamento_ID` INT NOT NULL AUTO_INCREMENT,
   `Nombre` VARCHAR(45) NOT NULL,
   `Descripcion` VARCHAR(80) NOT NULL,
   PRIMARY KEY (`Departamento_ID`)
   );
-
-CREATE TABLE IF NOT EXISTS `FACULTAD`.`Aulas`(
+CREATE TABLE IF NOT EXISTS `FACULTAD`.`CUATRIMESTRE` (
+  `Cuatrimestre_Id` INT NOT NULL AUTO_INCREMENT,
+  `Primer_cuatrimestre` INT NOT NULL,
+  `Segundo_cuatrimestre` INT NOT NULL,
+  `Fecha_inicio` DATE NOT NULL,
+  `Fecha_finalizacion` DATE NOT NULL,
+  PRIMARY KEY (`Cuatrimestre_Id`)
+  );
+CREATE TABLE IF NOT EXISTS `FACULTAD`.`SECCION` (
+  `Seccion_ID` INT NOT NULL AUTO_INCREMENT,
+  `1ra_nota` INT NOT NULL,
+  `2da_nota` INT NOT NULL,
+  `3ra_nota` INT NOT NULL,
+  PRIMARY KEY (`Seccion_ID`)
+  );
+CREATE TABLE IF NOT EXISTS `FACULTAD`.`AULAS` (
   `Aula_ID` INT NOT NULL AUTO_INCREMENT,
-  `Nombre_aula` VARCHAR(45) NOT NULL,
+  `Nombre_aula` INT NOT NULL,
   `Capacidad` INT NOT NULL,
   PRIMARY KEY (`Aula_ID`)
   );
-
-CREATE TABLE IF NOT EXISTS `FACULTAD`.`Evento` (
-  `Evento_ID` INT NOT NULL AUTO_INCREMENT,
-  `Nombre_evento` VARCHAR(45) NOT NULL,
-  `Fecha_evento` DATETIME NOT NULL,
-  `Descripcion_evento` VARCHAR(120) NOT NULL,
-  PRIMARY KEY (`Evento_ID`) 
-);
-
-CREATE TABLE IF NOT EXISTS `FACULTAD`.`Biblioteca` (
-  `Libro_ID` INT NOT NULL AUTO_INCREMENT,
-  `Titulo_libro` VARCHAR(90) NOT NULL,
-  `Autor` VARCHAR(90) NOT NULL,
-  `Genero` VARCHAR(45) NOT NULL,
-  `Disponidad` INT NOT NULL,
-  PRIMARY KEY (`Libro_ID`)
-  );
-
--- CREACION TABLAS CON FOREIGN KEY________________________________________________________________
-
-CREATE TABLE IF NOT EXISTS `FACULTAD`.`Cursos` (
-  `Curso_ID` INT NOT NULL AUTO_INCREMENT,
-  `Nombre_carrera` VARCHAR(45) NOT NULL,
-  `Descripcion` VARCHAR(80) NOT NULL,
-  `Carrera_ID` INT NOT NULL,
-  PRIMARY KEY (`Curso_ID`),
-  FOREIGN KEY (`Carrera_ID`) REFERENCES `FACULTAD`.`Carreras` (`Carrera_ID`)
-);
-
-CREATE TABLE IF NOT EXISTS `FACULTAD`.`Horarios_de_cursos` (
+CREATE TABLE IF NOT EXISTS `FACULTAD`.`HORARIOS` (
   `Horario_ID` INT NOT NULL AUTO_INCREMENT,
   `Dia_de_la_semana` DATE NOT NULL,
   `Hora_inicio` TIME NOT NULL,
   `Hora_finalizacion` TIME NOT NULL,
-  `Curso_ID` INT NOT NULL,
-  PRIMARY KEY (`Horario_ID`),
-  FOREIGN KEY (`Curso_ID`) REFERENCES `FACULTAD`. `Cursos` (`Curso_ID`)
-);
-
-
-CREATE TABLE IF NOT EXISTS `FACULTAD`.`Calificaciones` (
-  `Calificacion_ID` INT NOT NULL AUTO_INCREMENT,
-  `Calificacion` INT NOT NULL,
-  `Estudiante_ID` INT NOT NULL,
-  `Curso_ID` INT NOT NULL,
-  PRIMARY KEY (`Calificacion_ID`),
-  FOREIGN KEY (`Estudiante_ID`) REFERENCES `FACULTAD`.`Estudiantes` (`Estudiante_ID`),
-  FOREIGN KEY (`Curso_ID`) REFERENCES `FACULTAD`.`Cursos` (`Curso_ID`)
-);
-
-CREATE TABLE IF NOT EXISTS `FACULTAD`.`Materias` (
+  PRIMARY KEY (`Horario_ID`)
+  );
+-- CREACION TABLAS CON FOREIGN KEY_______________________________________________________
+CREATE TABLE IF NOT EXISTS `FACULTAD`.`CARRERAS` (
+  `Carrera_ID` INT NOT NULL AUTO_INCREMENT,
+  `Nombre_carrera` VARCHAR(45) NOT NULL,
+  `Descripticion` VARCHAR(80) NOT NULL,
+  `Departamento_ID` INT NOT NULL,
+  PRIMARY KEY (`Carrera_ID`),
+  FOREIGN KEY (`Departamento_ID`) REFERENCES `FACULTAD`.`DEPARTAMENTOS` (`Departamento_ID`)
+  );
+CREATE TABLE IF NOT EXISTS `FACULTAD`.`MATERIAS` (
   `Materia_ID` INT NOT NULL AUTO_INCREMENT,
   `Nombre_materia` VARCHAR(45) NOT NULL,
+  `comision` INT NOT NULL,
   `Descripcion_materia` VARCHAR(80) NOT NULL,
-  `Departamento_ID` INT NOT NULL,
+  `Carrera_ID` INT NOT NULL,
   PRIMARY KEY (`Materia_ID`),
-  FOREIGN KEY (`Departamento_ID`) REFERENCES `FACULTAD`.`Departamento` (`Departamento_ID`)
-);
-
-CREATE TABLE IF NOT EXISTS `FACULTAD`.`Asistencia_evento` (
+  FOREIGN KEY (`Carrera_ID`) REFERENCES `FACULTAD`.`CARRERAS` (`Carrera_ID`)
+  );
+CREATE TABLE IF NOT EXISTS `FACULTAD`.`CURSO` (
+  `Curso_ID` INT NOT NULL AUTO_INCREMENT,
+  `Materia_ID` INT NOT NULL,
+  `Aula_ID` INT NOT NULL,
+  `Profesor_ID` INT NOT NULL,
+  `Horario_ID` INT NOT NULL,
+  `Cuatrimestre_ID` INT NOT NULL,
+  PRIMARY KEY (`Curso_ID`),
+  FOREIGN KEY (`Materia_ID`) REFERENCES `FACULTAD`.`MATERIAS` (`Materia_ID`),
+  FOREIGN KEY (`Aula_ID`) REFERENCES `FACULTAD`.`AULAS` (`Aula_ID`),
+  FOREIGN KEY (`Profesor_ID`) REFERENCES `FACULTAD`.`PROFESORES` (`Profesor_ID`),
+  FOREIGN KEY (`Horario_ID`) REFERENCES `FACULTAD`.`HORARIOS` (`Horario_ID`),
+  FOREIGN KEY (`Cuatrimestre_ID`) REFERENCES `FACULTAD`.`CUATRIMESTRE` (`Cuatrimestre_Id`)
+  );
+  
+CREATE TABLE IF NOT EXISTS `FACULTAD`.`INSCRIPCIONES_CURSADA` (
+  `Inscripcion_ID` INT NOT NULL AUTO_INCREMENT,
+  `Estudiante_ID` INT NOT NULL,
+  `Curso_ID` INT NOT NULL,
+  `Fecha_inscripcion` DATE NOT NULL,
+  PRIMARY KEY (`Inscripcion_ID`),
+  FOREIGN KEY (`Estudiante_ID`) REFERENCES `FACULTAD`.`ESTUDIANTES` (`Estudiante_ID`),
+  FOREIGN KEY (`Curso_ID` ) REFERENCES `FACULTAD`.`CURSO` (`Curso_ID`)
+  );
+CREATE TABLE IF NOT EXISTS `FACULTAD`.`CALIFICACIONES` (
+  `ID` INT NOT NULL AUTO_INCREMENT,
+  `Inscripcion_ID` INT NOT NULL,
+  `Seccion_ID` INT NOT NULL,
+  `Calificacion` INT NOT NULL,
+  PRIMARY KEY (`ID`),
+  FOREIGN KEY (`Inscripcion_ID`) REFERENCES `FACULTAD`.`INSCRIPCIONES_CURSADA`(`Inscripcion_ID`),
+  FOREIGN KEY (`Seccion_ID`) REFERENCES `FACULTAD`.`SECCION` (`Seccion_ID`)
+  );
+CREATE TABLE IF NOT EXISTS `FACULTAD`.`ASISTENCIAS` (
   `Asistencia_ID` INT NOT NULL AUTO_INCREMENT,
-  `Fecha_de_asistencia` DATE NOT NULL,
-  `Estudiante_ID` INT NOT NULL,
-  `Evento_ID` INT NOT NULL,
+  `INSCRICPION_CURSADA_ID` INT NOT NULL,
+  `Cantidad de dias` INT NOT NULL,
   PRIMARY KEY (`Asistencia_ID`),
-  FOREIGN KEY (`Estudiante_ID`) REFERENCES `FACULTAD`.`Estudiantes` (`Estudiante_ID`),
-  FOREIGN KEY (`Evento_ID`) REFERENCES `FACULTAD`.`Evento` (`Evento_ID`)
-);
+  FOREIGN KEY (`INSCRICPION_CURSADA_ID`) REFERENCES `FACULTAD`.`INSCRIPCIONES_CURSADA` (`Inscripcion_ID`)
+  );
+  
+  
+-- CREACION DE AUDITORIAS________________________________________________________________
+-- CREACION DE VISTAS____________________________________________________________________
+-- MySQL Workbench Forward Engineering
 
-CREATE TABLE IF NOT EXISTS `FACULTAD`.`Prestamos_libros` (
-  `Prestamos_ID` INT NOT NULL AUTO_INCREMENT,
-  `Fecha_prestamo` DATE NOT NULL,
-  `Fecha_devolucion` DATE NOT NULL,
-  `Estudiante_ID` INT NOT NULL,
-  `Libro_ID` INT NOT NULL,
-  PRIMARY KEY (`Prestamos_ID`),
-  FOREIGN KEY (`Estudiante_ID`) REFERENCES `FACULTAD`.`Estudiantes` (`Estudiante_ID`),
-  FOREIGN KEY (`Libro_ID`) REFERENCES `FACULTAD`.`Biblioteca` (`Libro_ID`)
-);
 
--- CREACION DE AUDITORIAS________________________________________________________________________________
--- CREACION DE VISTAS_____________________________________________________________________________
+  
+
+
+
+
 
 
 
