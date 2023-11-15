@@ -1,6 +1,6 @@
 use facultad;
 select*
-from carreras;
+from estudiantes;
 DELETE FROM estudiantes WHERE estudiante_id>=1;
 
 insert into Estudiantes (Estudiante_ID, Nombre, Apellido, Fecha_nacimiento, Direccion, Correo) values 
@@ -56,8 +56,7 @@ INSERT INTO aulas (Aula_ID,Nombre_aula,Capacidad) VALUES
 (10,50,60);
 INSERT INTO carreras (carrera_ID, Nombre_carrera, descripticion, Departamento_ID) VALUES
 (1,"Ingenieria civil","Carreara de grado",1),
-(2,"Tecnico Seguridad e Higiene","Carrera de pre-grado",1),
-(3,"Ingenieria electromecanica","Carreara de grado",2);
+(2,"Ingenieria electromecanica","Carreara de grado",2);
 
 
 
