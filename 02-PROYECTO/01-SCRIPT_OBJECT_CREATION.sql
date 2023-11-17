@@ -29,8 +29,7 @@ CREATE TABLE IF NOT EXISTS `FACULTAD`.`DEPARTAMENTOS` (
   );
 CREATE TABLE IF NOT EXISTS `FACULTAD`.`CUATRIMESTRE` (
   `Cuatrimestre_Id` INT NOT NULL AUTO_INCREMENT,
-  `Primer_cuatrimestre` INT NOT NULL,
-  `Segundo_cuatrimestre` INT NOT NULL,
+  `Designacion_cuatrimestral` INT NOT NULL,
   `Fecha_inicio` DATE NOT NULL,
   `Fecha_finalizacion` DATE NOT NULL,
   PRIMARY KEY (`Cuatrimestre_Id`)
@@ -61,30 +60,24 @@ CREATE TABLE IF NOT EXISTS `FACULTAD`.`Periodo_cursada` (
   PRIMARY KEY (`Periodo_cursada_ID`)
   );
 -- CREACION TABLAS CON FOREIGN KEY_______________________________________________________
-CREATE TABLE IF NOT EXISTS `FACULTAD`.`CARRERAS` (
-  `Carrera_ID` INT NOT NULL AUTO_INCREMENT,
-  `Nombre_carrera` VARCHAR(45) NOT NULL,
-  `Descripticion` VARCHAR(80) NOT NULL,
-  `Departamento_ID` INT NOT NULL,
-  PRIMARY KEY (`Carrera_ID`),
-  FOREIGN KEY (`Departamento_ID`) REFERENCES `FACULTAD`.`DEPARTAMENTOS` (`Departamento_ID`)
-  );
-CREATE TABLE IF NOT EXISTS  `FACULTAD`.`PLAN_ESTUDIO` (
-`Plan_ID` INT NOT NULL AUTO_INCREMENT,
-`Carrera_ID` INT NOT NULL,
+
+CREATE TABLE IF NOT EXISTS  `FACULTAD`.`MATERIAS` (
+`Materia_ID` INT NOT NULL AUTO_INCREMENT,
+`Departamento_ID` INT NOT NULL,
+`Nivel` INT NOT NULL,
 `Periodo_cursada_ID` INT NOT NULL,
 `Asignatura` VARCHAR(45) NOT NULL,
 `Carga_horaria` INT NOT NULL,
-`Cursadas` VARCHAR(45) NOT NULL,
-PRIMARY KEY (`Plan_ID`),
-FOREIGN KEY (`Carrera_ID`) REFERENCES `FACULTAD`.`CARRERAS` (`Carrera_ID`),
+`Cursadas_necesarias` VARCHAR(45) NOT NULL,
+PRIMARY KEY (`Materia_ID`),
+FOREIGN KEY (`Departamento_ID`) REFERENCES `FACULTAD`.`DEPARTAMENTOS` (`Departamento_ID`),
 FOREIGN KEY (`Periodo_cursada_ID`) REFERENCES `FACULTAD`.`Periodo_cursada` (`Periodo_cursada_ID`)
 ); 
 CREATE TABLE IF NOT EXISTS `FACULTAD`.`COMISION` (
   `Comision_ID` INT NOT NULL AUTO_INCREMENT,
-  `Plan_ID` INT NOT NULL,
+  `Materia_ID` INT NOT NULL,
   PRIMARY KEY (`Comision_ID`),
-  FOREIGN KEY (`Plan_ID`) REFERENCES `FACULTAD`.`PLAN_ESTUDIO` (`Plan_ID`)
+  FOREIGN KEY (`Materia_ID`) REFERENCES `FACULTAD`.`MATERIAS` (`Materia_ID`)
   );
 CREATE TABLE IF NOT EXISTS `FACULTAD`.`CURSO` (
   `Curso_ID` INT NOT NULL AUTO_INCREMENT,

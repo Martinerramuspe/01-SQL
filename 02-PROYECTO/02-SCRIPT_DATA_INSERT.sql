@@ -54,9 +54,10 @@ INSERT INTO aulas (Aula_ID,Nombre_aula,Capacidad) VALUES
 (8,40,23),
 (9,45,30),
 (10,50,60);
-INSERT INTO carreras (carrera_ID, Nombre_carrera, descripticion, Departamento_ID) VALUES
-(1,"Ingenieria civil","Carreara de grado",1),
-(2,"Ingenieria electromecanica","Carreara de grado",2);
+INSERT INTO periodo_cursada (periodo_cursada_ID,nombre) VALUES
+(1,"Primer_cuatrimestre"),
+(2,"Segundo_cuatrimestre"),
+(3,"Anual");
 
 
 
