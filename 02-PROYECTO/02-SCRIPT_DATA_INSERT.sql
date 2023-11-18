@@ -59,5 +59,17 @@ INSERT INTO periodo_cursada (periodo_cursada_ID,nombre) VALUES
 (2,"Segundo_cuatrimestre"),
 (3,"Anual");
 
+INSERT INTO materias (Materia_ID,Departamento_ID,Nivel,Periodo_cursada_ID,Asignatura, Carga_horaria, Cursadas_necesarias) VALUES
+(1,3,1,1,"Álgebra y Geometría Analítica",10,0),
+(2,3,1,1,"Análisis Matemático I",10,0),
+(3,3,1,2,"Química General",10,0),
+(4,3,1,2,"Física I",10,0),
+(5,3,2,1,"Análisis Matemático II",10,0),
+(6,3,2,2,"Física II",10,0),
+(7,3,2,2,"Probabilidad y Estadística",6,0),
+(8,3,2,3,"Inglés I",2,0),
+(10,3,3,2,"Economía",6,0),
+(12,3,3,3,"Inglés II",2,0);
+
 
 
