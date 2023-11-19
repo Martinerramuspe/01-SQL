@@ -1,8 +1,4 @@
 use facultad;
-select*
-from estudiantes;
-DELETE FROM estudiantes WHERE estudiante_id>=1;
-
 insert into Estudiantes (Estudiante_ID, Nombre, Apellido, Fecha_nacimiento, Direccion, Correo) values 
 (1, 'Giulia', 'Trenaman', "1992-12-15", '0055 Logan Avenue', 'gtrenaman0@qq.com'),
 (2, 'Rosabel', 'Pridding', "1992-12-22", '1071 Armistice Point', 'rpridding1@oracle.com'),
@@ -58,18 +54,106 @@ INSERT INTO periodo_cursada (periodo_cursada_ID,nombre) VALUES
 (1,"Primer_cuatrimestre"),
 (2,"Segundo_cuatrimestre"),
 (3,"Anual");
-
+DELETE FROM MATERIAS;
+SELECT * FROM MATERIAS;
+SELECT * FROM periodo_cursada WHERE Periodo_cursada_ID = 3;
 INSERT INTO materias (Materia_ID,Departamento_ID,Nivel,Periodo_cursada_ID,Asignatura, Carga_horaria, Cursadas_necesarias) VALUES
-(1,3,1,1,"Álgebra y Geometría Analítica",10,0),
-(2,3,1,1,"Análisis Matemático I",10,0),
-(3,3,1,2,"Química General",10,0),
-(4,3,1,2,"Física I",10,0),
-(5,3,2,1,"Análisis Matemático II",10,0),
-(6,3,2,2,"Física II",10,0),
-(7,3,2,2,"Probabilidad y Estadística",6,0),
-(8,3,2,3,"Inglés I",2,0),
-(10,3,3,2,"Economía",6,0),
-(12,3,3,3,"Inglés II",2,0);
+(1,3,1,1,"Álgebra y Geometría Analítica",10,"0"),
+(2,3,1,1,"Análisis Matemático I",10,"0"),
+(3,3,1,2,"Química General",10,"0"),
+(4,3,1,2,"Física I",10,"0"),
+(5,3,2,1,"Análisis Matemático II",10,"0"),
+(6,3,2,2,"Física II",10,"0"),
+(7,3,2,2,"Probabilidad y Estadística",6,"0"),
+(8,3,2,3,"Inglés I",2,"0"),
+(9,3,3,2,"Economía",6,"0"),
+(10,3,3,3,"Inglés II",2,"0");
+
+INSERT INTO materias (Materia_ID, Departamento_ID, Nivel, Periodo_cursada_ID, Asignatura, Carga_horaria, Cursadas_necesarias)
+VALUES
+(13, 1, 1, 1, 'Ingeniería y Sociedad', 4, "0"),
+(14, 1, 1, 2, 'Fundamentos de Informática', 4, "0"),
+(15, 1, 1, 3, 'Sistemas de Representación', 3, "0"),
+(16, 1, 1, 3, 'Ingeniería Civil I', 3, "0"),
+(17, 1, 2, 1, 'Estabilidad', 10, '1-2-5-6-7'),
+(18, 1, 2, 2, 'Geología Aplicada', 4, '4-5-8'),
+(19, 1, 2, 3, 'Tecnología de los Materiales', 4, '2-4-5-7'),
+(20, 1, 2, 3, 'Ingeniería Civil II (integradora)', 3, '3-6-7-8'),
+(21, 1, 3, 1, 'Resistencia de Materiales', 8, '10'),
+(22, 1, 3, 1, 'Hidráulica General y Aplicada', 10, '9-10-11-12-16'),
+(23, 1, 3, 1, 'Tecnología del Hormigón', 4, '12-14-15'),
+(24, 1, 3, 2, 'Geotopografía', 8, '9-11-12-16'),
+(25, 1, 3, 2, 'Instalaciones Eléctricas y Acústicas', 4, '11-14-16'),
+(26, 1, 3, 2, 'Instalaciones Termomecánicas', 4, '11-14-16'),
+(27, 1, 3, 3, 'Tecnología de la Construcción', 6, '10-14-15-16'),
+(28, 1, 4, 1, 'Instalaciones Sanitarias y de Gas', 6, '18-20-24-25'),
+(29, 1, 4, 1, 'Análisis Estructural I', 10, '17-19'),
+(30, 1, 4, 1, 'Estructuras de Hormigón', 10, '17-19-20-25-26'),
+(31, 1, 4, 2, 'Geotecnia', 10, '17-18-19-20-25'),
+(32, 1, 4, 2, 'Hidrología y Obras Hidráulicas', 8, '17-18-20-24-25-26'),
+(33, 1, 4, 3, 'Diseño Arquitectónico, Planeamineto', 5, '20-22-23-24-25-26'),
+(34, 1, 4, 1, 'Construcciones Metálicas y de Madera', 8, '21-28'),
+(35, 1, 4, 1, 'Cimentaciones', 6, '21-28-29-30-31'),
+(36, 1, 4, 1, 'Ingeniería Sanitaria', 6, '27-30-31'),
+(37, 1, 4, 1, 'Vías de Comunicación I', 8, '19-20-25'),
+(38, 1, 4, 1, 'Gestión Ambiental y Desarrollo Sustentable', 6, '30-31-32-33'),
+(39, 1, 4, 1, 'Elasticidad y Plasticidad', 6, '9-21'),
+(40, 1, 4, 1, 'Prefabricación', 2, '14-29'),
+(41, 1, 5, 2, 'Análisis Estructural II', 10, '21-28-29-30-31'),
+(42, 1, 5, 2, 'Vías de Comunicación II', 8, '29-30-31-32-37'),
+(43, 1, 5, 2, 'Análisis Estructural III', 4, '39-41'),
+(44, 1, 5, 2, "Diseño Arquitectónico y de Plabneamiento II",3,"33"),
+(45, 1, 5, 2, "Gestión de la Responsabilidad Social ",4,"24-32"),
+(46, 1, 5, 3, "Organización y Conducción de Obras",10,"27-29-30-31-33"),
+(47, 1, 6, 1, "Puentes",5, "35-41"),
+(48, 1, 6, 1, "Obras Fluviales y Marítimas", 6,"35-41"),
+(49, 1, 6, 3, "Proyecto Final (integradora)",4,"27-28-29-30-31-32-33"),
+(50, 1, 3, 2, "Calculo avanzado",4,"0"),
+(51, 1, 4, 2, "Ingenieria legal",6, "9-12-15-16"),
+(52,1,5,2, "Introduccion a la investigacion",4, "24-32");
+
+INSERT INTO materias (Materia_ID, Departamento_ID, Nivel, Periodo_cursada_ID, Asignatura, Carga_horaria, Cursadas_necesarias) VALUES
+(53, 2, 1, 1, 'Sistemas de Representación', 6, '0'),
+(54, 2, 1, 2, 'Ingeniería y Sociedad', 4, '0'),
+(55, 2, 1, 2, 'Representación Gráfica', 6, '0'),
+(56, 2, 1, 3, 'Ingeniería Electromecánica I', 2, '0'),
+(57, 2, 2, 2, 'Programación en Computación', 6, '1-2'),
+(58, 2, 2, 2, 'Conocimiento de Materiales', 8, '4'),
+(59, 2, 2, 3, 'Estabilidad', 6, '1-2-6'),
+(60, 2, 2, 3, 'Ingeniería Electromecánica II', 2, '1-2-8'),
+(61, 2, 3, 1, 'Tecnología Mecánica', 10, '11-13'),
+(62, 2, 3, 1, 'Matemática para Ingeniería Electromecánica', 6, '6'),
+(63, 2, 3, 2, 'Mecánica y Mecanismos', 8, '7-9-14'),
+(64, 2, 3, 2, 'Higiene y Seguridad Industrial', 4, '11'),
+(65, 2, 3, 2, 'Oleohidráulica y Neumática', 4, '11'),
+(66, 2, 3, 3, 'Electrotecnia', 6, '9-11'),
+(67, 2, 3, 3, 'Termodinámica Técnica', 4, '11'),
+(68, 2, 3, 3, 'Ingeniería Electromecánica III', 3, '9-11-16'),
+(69, 2, 4, 1, 'Máquinas Térmicas', 10, '24'),
+(70, 2, 4, 1, 'Mediciones Eléctricas', 8, '18-22'),
+(71, 2, 4, 2, 'Electrónica Industrial', 6, '22'),
+(72, 2, 4, 2, 'Diseño y Fabricación Asistido por Computadora', 4, '13-17-19'),
+(73, 2, 4, 2, 'Ingeniería de Superficies', 6, '0'),
+(74, 2, 4, 2, 'Legislación', 4, '16'),
+(75, 2, 4, 3, 'Elementos de Máquinas', 6, '17-19-25'),
+(76, 2, 4, 3, 'Máquinas Eléctricas', 5, '22'),
+(77, 2, 4, 3, 'Mecánica de los Fluidos y Máquinas', 5, '19-24'),
+(78, 2, 5, 1, 'Máquinas y Equipos de Transporte', 4, '21-28-33-35'),
+(79, 2, 5, 1, 'Gestión y Mantenimiento Electromecánico', 4, '21-28-34-35'),
+(80, 2, 5, 1, 'Organización Industrial', 6, '26-29'),
+(81, 2, 5, 1, 'Automatización y Control Industrial', 6, '18-33-28-34-35'),
+(82, 2, 5, 1, 'Introducción al Proyecto', 6, '0'),
+(83, 2, 5, 1, 'Electrónica de Potencia', 4, '27-28'),
+(84, 2, 5, 1, 'Ambiental', 4, '29-32'),
+(85, 2, 5, 2, 'Instalaciones Térmicas y Mecánicas', 6, '27-28'),
+(86, 2, 5, 2, 'Centrales y Sistemas de Transmisión', 10, '27-28-34-35'),
+(87, 2, 5, 2, 'Automatismos', 8, '39-41'),
+(88, 2, 5, 2, 'Emprendedorismo', 4, '38'),
+(89, 2, 5, 2, 'Introducción a la Investigación Científica', 4, '16'),
+(90, 2, 5, 2, 'Instalaciones Industriales Regionales', 6,"40"),
+(91, 2, 5, 3, 'Redes de Distribución', 5, '34-35'),
+(92, 2, 5, 3, 'Proyecto Final (integradora)', 3, '23-27-28-35');
+
 
 
 
