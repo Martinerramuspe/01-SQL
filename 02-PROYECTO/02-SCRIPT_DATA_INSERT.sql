@@ -67,10 +67,7 @@ INSERT INTO materias (Materia_ID,Departamento_ID,Nivel,Periodo_cursada_ID,Asigna
 (7,3,2,2,"Probabilidad y Estadística",6,"0"),
 (8,3,2,3,"Inglés I",2,"0"),
 (9,3,3,2,"Economía",6,"0"),
-(10,3,3,3,"Inglés II",2,"0");
-
-INSERT INTO materias (Materia_ID, Departamento_ID, Nivel, Periodo_cursada_ID, Asignatura, Carga_horaria, Cursadas_necesarias)
-VALUES
+(10,3,3,3,"Inglés II",2,"0"),
 (13, 1, 1, 1, 'Ingeniería y Sociedad', 4, "0"),
 (14, 1, 1, 2, 'Fundamentos de Informática', 4, "0"),
 (15, 1, 1, 3, 'Sistemas de Representación', 3, "0"),
@@ -110,9 +107,7 @@ VALUES
 (49, 1, 6, 3, "Proyecto Final (integradora)",4,"27-28-29-30-31-32-33"),
 (50, 1, 3, 2, "Calculo avanzado",4,"0"),
 (51, 1, 4, 2, "Ingenieria legal",6, "9-12-15-16"),
-(52,1,5,2, "Introduccion a la investigacion",4, "24-32");
-
-INSERT INTO materias (Materia_ID, Departamento_ID, Nivel, Periodo_cursada_ID, Asignatura, Carga_horaria, Cursadas_necesarias) VALUES
+(52,1,5,2, "Introduccion a la investigacion",4, "24-32"),
 (53, 2, 1, 1, 'Sistemas de Representación', 6, '0'),
 (54, 2, 1, 2, 'Ingeniería y Sociedad', 4, '0'),
 (55, 2, 1, 2, 'Representación Gráfica', 6, '0'),
