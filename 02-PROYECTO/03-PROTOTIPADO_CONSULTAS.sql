@@ -7,10 +7,17 @@ SELECT *
 FROM materias
 WHERE nivel = 3 AND Departamento_ID IN (1, 3);
 
+SELECT *
+FROM materias
+WHERE nivel = 4 AND Departamento_ID IN (1, 3);
 
+SELECT *
+FROM materias
+WHERE nivel = 5 AND Departamento_ID IN (1, 3);
 
-
-
+SELECT *
+FROM materias
+WHERE nivel = 6 AND Departamento_ID IN (1, 3);
 
 
 

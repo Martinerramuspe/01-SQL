@@ -149,6 +149,21 @@ INSERT INTO materias (Materia_ID,Departamento_ID,Nivel,Periodo_cursada_ID,Asigna
 (91, 2, 5, 3, 'Redes de Distribución', 5, '34-35'),
 (92, 2, 5, 3, 'Proyecto Final (integradora)', 3, '23-27-28-35');
 
+INSERT INTO cuatrimestre (Cuatrimestre_ID,Designacion_cuatrimestral,Fecha_inicio,Fecha_finalizacion) VALUES
+(1,1,'2019-03-04', '2019-07-04'),
+(2,2,'2019-08-05', '2019-12-12'),
+(3,1,'2020-03-02','2020-07-02');
 
-
+INSERT INTO horarios (Horario_ID,Dia_de_la_semana,Hora_inicio,Hora_finalizacion) VALUES
+(1,"Lunes",'07:30:00','12:00:00'),
+(2,"Viernes",'07:30:00','12:00:00'),
+(3,"Martes",'07:30:00','12:00:00'),
+(4,"Jueves",'07:30:00','12:00:00'),
+(5,"Lunes",'15:00:00','19:00:00'),
+(6,"Miercoles",'08:00:00','11:00:00'),
+(7,"Miercoles",'15:00:00','18:00:00'),
+(8,"Lunes",'07:30:00','12:00:00'),
+(9,"Viernes",'07:30:00','12:00:00'),
+(10,"Martes",'07:30:00','12:00:00'),
+(11,"Jueves",'07:30:00','12:00:00');
 
