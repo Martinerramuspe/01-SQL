@@ -54,8 +54,8 @@ INSERT INTO periodo_cursada (periodo_cursada_ID,nombre) VALUES
 (1,"Primer_cuatrimestre"),
 (2,"Segundo_cuatrimestre"),
 (3,"Anual");
-DELETE FROM MATERIAS;
-SELECT * FROM MATERIAS;
+DELETE FROM horarios;
+SELECT * FROM horarios;
 SELECT * FROM periodo_cursada WHERE Periodo_cursada_ID = 3;
 INSERT INTO materias (Materia_ID,Departamento_ID,Nivel,Periodo_cursada_ID,Asignatura, Carga_horaria, Cursadas_necesarias) VALUES
 (1,3,1,1,"Álgebra y Geometría Analítica",10,"0"),
@@ -166,4 +166,6 @@ INSERT INTO horarios (Horario_ID,Dia_de_la_semana,Hora_inicio,Hora_finalizacion)
 (9,"Viernes",'07:30:00','12:00:00'),
 (10,"Martes",'07:30:00','12:00:00'),
 (11,"Jueves",'07:30:00','12:00:00');
+
+
 
