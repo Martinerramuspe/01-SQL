@@ -21,3 +21,9 @@ WHERE nivel = 6 AND Departamento_ID IN (1, 3);
 
 
 
+select* 
+from materias;
+
+select*
+from materias
+where departamento_ID =1 and nivel=1;

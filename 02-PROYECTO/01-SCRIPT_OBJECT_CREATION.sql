@@ -38,20 +38,34 @@ CREATE TABLE IF NOT EXISTS `FACULTAD`.`AULAS` (
   `Capacidad` INT NOT NULL,
   PRIMARY KEY (`Aula_ID`)
   );
-CREATE TABLE IF NOT EXISTS `FACULTAD`.`HORARIOS` (
-  `Horario_ID` INT NOT NULL AUTO_INCREMENT,
-  `Dia_de_la_semana` VARCHAR(50) NOT NULL,
-  `Hora_inicio` TIME NOT NULL,
-  `Hora_finalizacion` TIME NOT NULL,
-  PRIMARY KEY (`Horario_ID`)
-  );
+
 CREATE TABLE IF NOT EXISTS `FACULTAD`.`Periodo_cursada` (
   `Periodo_cursada_ID` INT NOT NULL AUTO_INCREMENT,
   `Nombre` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Periodo_cursada_ID`)
   );
 -- CREACION TABLAS CON FOREIGN KEY_______________________________________________________
-
+CREATE TABLE IF NOT EXISTS  `FACULTAD`.`MATERIAS` (
+`Materia_ID` INT NOT NULL AUTO_INCREMENT,
+`Departamento_ID` INT NOT NULL,
+`Nivel` INT NOT NULL,
+`Periodo_cursada_ID` INT NOT NULL,
+`Asignatura` VARCHAR(45) NOT NULL,
+`Carga_horaria` INT NOT NULL,
+`Cursadas_necesarias` VARCHAR(45) NOT NULL,
+PRIMARY KEY (`Materia_ID`),
+FOREIGN KEY (`Departamento_ID`) REFERENCES `FACULTAD`.`DEPARTAMENTOS` (`Departamento_ID`),
+FOREIGN KEY (`Periodo_cursada_ID`) REFERENCES `FACULTAD`.`Periodo_cursada` (`Periodo_cursada_ID`)
+);
+CREATE TABLE IF NOT EXISTS `FACULTAD`.`HORARIOS` (
+  `Horario_ID` INT NOT NULL AUTO_INCREMENT,
+  `Dia_de_la_semana` VARCHAR(50) NOT NULL,
+  `Hora_inicio` TIME NOT NULL,
+  `Hora_finalizacion` TIME NOT NULL,
+  `MATERIA_ID` INT NOT NULL,
+  FOREIGN KEY (`MATERIA_ID`) REFERENCES `FACULTAD`.`MATERIAS` (`Materia_ID`),
+  PRIMARY KEY (`Horario_ID`)
+  );
 CREATE TABLE IF NOT EXISTS `FACULTAD`.`ESTUDIANTES` (
   `Estudiante_ID` INT NOT NULL AUTO_INCREMENT,
   `Nombre` VARCHAR(45) NOT NULL,
@@ -65,31 +79,16 @@ CREATE TABLE IF NOT EXISTS `FACULTAD`.`ESTUDIANTES` (
   UNIQUE INDEX (`Correo`)
   );
 
-CREATE TABLE IF NOT EXISTS  `FACULTAD`.`MATERIAS` (
-`Materia_ID` INT NOT NULL AUTO_INCREMENT,
-`Departamento_ID` INT NOT NULL,
-`Nivel` INT NOT NULL,
-`Periodo_cursada_ID` INT NOT NULL,
-`Asignatura` VARCHAR(45) NOT NULL,
-`Carga_horaria` INT NOT NULL,
-`Cursadas_necesarias` VARCHAR(45) NOT NULL,
-PRIMARY KEY (`Materia_ID`),
-FOREIGN KEY (`Departamento_ID`) REFERENCES `FACULTAD`.`DEPARTAMENTOS` (`Departamento_ID`),
-FOREIGN KEY (`Periodo_cursada_ID`) REFERENCES `FACULTAD`.`Periodo_cursada` (`Periodo_cursada_ID`)
-);
-
 CREATE TABLE IF NOT EXISTS `FACULTAD`.`CURSO` (
   `Curso_ID` INT NOT NULL AUTO_INCREMENT,
   `Materia_ID` INT NOT NULL,
   `Aula_ID` INT NOT NULL,
   `Profesor_ID` INT NOT NULL,
-  `Horario_ID` INT NOT NULL,
   `Cuatrimestre_ID` INT NOT NULL,
   PRIMARY KEY (`Curso_ID`),
   FOREIGN KEY (`Materia_ID`) REFERENCES `FACULTAD`.`MATERIAS` (`Materia_ID`),
   FOREIGN KEY (`Aula_ID`) REFERENCES `FACULTAD`.`AULAS` (`Aula_ID`),
   FOREIGN KEY (`Profesor_ID`) REFERENCES `FACULTAD`.`PROFESORES` (`Profesor_ID`),
-  FOREIGN KEY (`Horario_ID`) REFERENCES `FACULTAD`.`HORARIOS` (`Horario_ID`),
   FOREIGN KEY (`Cuatrimestre_ID`) REFERENCES `FACULTAD`.`CUATRIMESTRE` (`Cuatrimestre_Id`)
   );
   
