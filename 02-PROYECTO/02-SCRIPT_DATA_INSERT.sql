@@ -217,7 +217,6 @@ INSERT INTO inscripciones_cursada (Inscripcion_ID,Estudiante_ID,Curso_ID) VALUES
 (151,11,8),(152,12,8),(153,13,8),(154,14,8),(155,15,8),
 (156,16,8),(157,17,8),(158,18,8),(159,19,8),(160,20,8);
 
-INSERT INTO calificaciones (ID,Inscripcion_ID,Seccion_ID,Calificacion) VALUES
-(1,1,
-
+INSERT INTO calificaciones (Calificaciones_ID,Inscripcion_ID,Evaluacion_N°1,Recuperatorio_N°1,Evaluacion_N°2,Recuperatorio_N°2) VALUES
+(1,1,10,NULL,9,NULL);
 

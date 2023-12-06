@@ -15,37 +15,33 @@ order by conteo_por_grupo desc;
 
 
 -- Realizamos el conteo de juegos no repetidos.
-SELECT COUNT(poroto.name)
+SELECT COUNT(poroto.conteo_por_grupo) as conteo_sin_repetidos
 FROM ( 
 	SELECT game.name, COUNT(name) as conteo_por_grupo
     FROM game
     GROUP BY name
     ) AS poroto;
 
-SELECT game.id_game,game.name,game.description
+
+SELECT game.id_game,game.name as jeje,game.description
 FROM game
-WHERE  description <> "";
+WHERE  description <> ""; # Aquellas filas donde la description NO esta vacia
+
+SELECT game.id_game, game.name, game.description
+FROM game
+WHERE description = ""; # Aquellas filas donde la description  esta vacia
 
 -- Hay solo 81 game con descripciones.
-SELECT COUNT(GORDON.name)
+SELECT COUNT(GORDON.jeje) as Conteo_sin_repetir
 FROM(
-   SELECT game.id_game, game.name, game.description
+   SELECT game.id_game,game.name as jeje,game.description
    FROM game
-   WHERE description <> ""
+   WHERE  description <> ""
    ) as GORDON;
    
    
 -- De los names que se repiten, algun tiene descripcion nula? 
+-- Creo que estamos en presencia de un join entre una tabla y una cosulta 
 
 
-select game.name, count(name) as conteo_por_grupo
-from game
-group by name
-having conteo_por_grupo > 1
-order by conteo_por_grupo desc;
-
-select game.name
-from game
-group by name
-having 
 
