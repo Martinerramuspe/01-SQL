@@ -55,7 +55,9 @@ INSERT INTO periodo_cursada (periodo_cursada_ID,nombre) VALUES
 (2,"Segundo_cuatrimestre"),
 (3,"Anual");
 DELETE FROM horarios;
-SELECT * FROM horarios;
+SELECT * FROM calificaciones
+WHERE Calificaciones_ID =2;
+
 SELECT * FROM periodo_cursada WHERE Periodo_cursada_ID = 3;
 INSERT INTO materias (Materia_ID,Departamento_ID,Nivel,Periodo_cursada_ID,Asignatura, Carga_horaria, Cursadas_necesarias) VALUES
 (1,3,1,1,"Álgebra y Geometría Analítica",10,"0"),
