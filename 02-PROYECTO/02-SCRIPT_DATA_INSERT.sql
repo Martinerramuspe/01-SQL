@@ -54,11 +54,7 @@ INSERT INTO periodo_cursada (periodo_cursada_ID,nombre) VALUES
 (1,"Primer_cuatrimestre"),
 (2,"Segundo_cuatrimestre"),
 (3,"Anual");
-DELETE FROM horarios;
-SELECT * FROM calificaciones
-WHERE Calificaciones_ID =2;
 
-SELECT * FROM periodo_cursada WHERE Periodo_cursada_ID = 3;
 INSERT INTO materias (Materia_ID,Departamento_ID,Nivel,Periodo_cursada_ID,Asignatura, Carga_horaria, Cursadas_necesarias) VALUES
 (1,3,1,1,"Álgebra y Geometría Analítica",10,"0"),
 (2,3,1,1,"Análisis Matemático I",10,"0"),
@@ -168,12 +164,6 @@ INSERT INTO horarios (Horario_ID,Dia_de_la_semana,Hora_inicio,Hora_finalizacion,
 (9,"Viernes",'07:30:00','12:00:00',4),
 (10,"Martes",'07:30:00','12:00:00',3),
 (11,"Jueves",'07:30:00','12:00:00',3);
-SELECT *
-FROM MATERIAS
-WHERE DEPARTAMENTO_ID IN (1, 3) AND Nivel = 1;
-
-SELECT *
-FROM cuatrimestre;
 
 INSERT INTO curso (Curso_ID,Materia_ID,Aula_ID,Profesor_ID,Cuatrimestre_ID) VALUES
 (1,1,10,5,1),
@@ -219,6 +209,5 @@ INSERT INTO inscripciones_cursada (Inscripcion_ID,Estudiante_ID,Curso_ID) VALUES
 (151,11,8),(152,12,8),(153,13,8),(154,14,8),(155,15,8),
 (156,16,8),(157,17,8),(158,18,8),(159,19,8),(160,20,8);
 
-INSERT INTO calificaciones (Calificaciones_ID,Inscripcion_ID,Evaluacion_N°1,Recuperatorio_N°1,Evaluacion_N°2,Recuperatorio_N°2) VALUES
-(1,1,10,NULL,9,NULL);
+
 
