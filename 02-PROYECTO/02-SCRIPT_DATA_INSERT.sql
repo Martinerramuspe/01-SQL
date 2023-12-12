@@ -3,27 +3,27 @@ INSERT INTO departamentos (Departamento_ID, nombre, Descripcion) VALUES
 (1, "INGENIERIA CIVIL","Financiado por ministerio de educacion,Creacion:1974"),
 (2, "INGENIERIA ELECTROMECANICA", "Financiado por ministerio de educacion,Creacion: 1967"),
 (3, "MATERIAS BASICAS", "Financiada por ministerio, Creacion:1967");
-insert into Estudiantes (Estudiante_ID, Nombre, Apellido, Fecha_nacimiento, Direccion, Correo,Departamento_ID) values 
-(1, 'Giulia', 'Trenaman', "1992-12-15", '0055 Logan Avenue', 'gtrenaman0@qq.com',1),
-(2, 'Rosabel', 'Pridding', "1992-12-22", '1071 Armistice Point', 'rpridding1@oracle.com',1),
-(3, 'Marijo', 'Tuke', '1993-01-20', '3549 Rigney Drive', 'mtuke2@barnesandnoble.com',1),
-(4, 'Anitra', 'Hover', '1997-08-31', '25 Killdeer Avenue', 'ahover3@ameblo.jp',2),
-(5, 'Emyle', 'Kibel', '1990-05-04', '57 Esch Park', 'ekibel4@odnoklassniki.ru',1),
-(6, 'Adan', 'Josifovic', '1997-05-09', '7 Mariners Cove Terrace', 'ajosifovic5@squarespace.com',2),
-(7, 'Kaylyn', 'Waddam', '1992-10-11', '91 Killdeer Way', 'kwaddam6@china.com.cn',1),
-(8, 'Berri', 'Wearing', '1990-12-12', '0 8th Street', 'bwearing7@tmall.com',1),
-(9, 'Yasmin', 'Volette', '1993-08-06', '95 Eliot Place', 'yvolette8@wikispaces.com',1),
-(10, 'Madelina', 'Briston', '1998-12-09', '290 Schmedeman Crossing', 'mbriston9@wsj.com',2),
-(11, 'Dreddy', 'Sailer', '1996-01-31', '47 Tony Circle', 'dsailera@w3.org',2),
-(12, 'Leslie', 'Tanslie', '1995-12-13', '89 Nancy Plaza', 'ltanslieb@gizmodo.com',1),
-(13, 'Gabrila', 'Keeney', '1995-10-31', '74 Katie Parkway', 'gkeeneyc@ebay.com',2),
-(14, 'Hazel', 'Touson', '1990-04-27', '7234 Katie Terrace', 'htousond@sbwire.com',2),
-(15, 'Kesley', 'Polycote', '1993-07-14', '48 Sullivan Street', 'kpolycotee@slashdot.org',2),
-(16, 'Jsandye', 'Dunbleton', '1995-03-29', '9199 Little Fleur Road', 'jdunbletonf@imgur.com',2),
-(17, 'Zena', 'Rumney', '1994-11-10', '5364 Petterle Terrace', 'zrumneyg@disqus.com',1),
-(18, 'Gratiana', 'Zanicchi', '1996-06-09', '7575 Delaware Court', 'gzanicchih@newsvine.com',2),
-(19, 'Kitty', 'Feldharker', '1990-07-28', '60110 Canary Lane', 'kfeldharkeri@elpais.com',1),
-(20, 'Pearline', 'Aubert', '2000-04-04', '29 Gale Way', 'paubertj@godaddy.com',2);
+insert into Estudiantes (Estudiante_ID, Nombre, Apellido, Fecha_nacimiento, Direccion, Correo) values 
+(1, 'Giulia', 'Trenaman', "1992-12-15", '0055 Logan Avenue', 'gtrenaman0@qq.com'),
+(2, 'Rosabel', 'Pridding', "1992-12-22", '1071 Armistice Point', 'rpridding1@oracle.com'),
+(3, 'Marijo', 'Tuke', '1993-01-20', '3549 Rigney Drive', 'mtuke2@barnesandnoble.com'),
+(4, 'Anitra', 'Hover', '1997-08-31', '25 Killdeer Avenue', 'ahover3@ameblo.jp'),
+(5, 'Emyle', 'Kibel', '1990-05-04', '57 Esch Park', 'ekibel4@odnoklassniki.ru'),
+(6, 'Adan', 'Josifovic', '1997-05-09', '7 Mariners Cove Terrace', 'ajosifovic5@squarespace.com'),
+(7, 'Kaylyn', 'Waddam', '1992-10-11', '91 Killdeer Way', 'kwaddam6@china.com.cn'),
+(8, 'Berri', 'Wearing', '1990-12-12', '0 8th Street', 'bwearing7@tmall.com'),
+(9, 'Yasmin', 'Volette', '1993-08-06', '95 Eliot Place', 'yvolette8@wikispaces.com'),
+(10, 'Madelina', 'Briston', '1998-12-09', '290 Schmedeman Crossing', 'mbriston9@wsj.com'),
+(11, 'Dreddy', 'Sailer', '1996-01-31', '47 Tony Circle', 'dsailera@w3.org'),
+(12, 'Leslie', 'Tanslie', '1995-12-13', '89 Nancy Plaza', 'ltanslieb@gizmodo.com'),
+(13, 'Gabrila', 'Keeney', '1995-10-31', '74 Katie Parkway', 'gkeeneyc@ebay.com'),
+(14, 'Hazel', 'Touson', '1990-04-27', '7234 Katie Terrace', 'htousond@sbwire.com'),
+(15, 'Kesley', 'Polycote', '1993-07-14', '48 Sullivan Street', 'kpolycotee@slashdot.org'),
+(16, 'Jsandye', 'Dunbleton', '1995-03-29', '9199 Little Fleur Road', 'jdunbletonf@imgur.com'),
+(17, 'Zena', 'Rumney', '1994-11-10', '5364 Petterle Terrace', 'zrumneyg@disqus.com'),
+(18, 'Gratiana', 'Zanicchi', '1996-06-09', '7575 Delaware Court', 'gzanicchih@newsvine.com'),
+(19, 'Kitty', 'Feldharker', '1990-07-28', '60110 Canary Lane', 'kfeldharkeri@elpais.com'),
+(20, 'Pearline', 'Aubert', '2000-04-04', '29 Gale Way', 'paubertj@godaddy.com');
 
 INSERT INTO profesores (Profesor_ID, Nombre, Apellido, Fecha_nacimiento, Direccion, Correo) VALUES
 (1, 'Lorraine', 'Rosendale', '1985-07-07', '080 Mockingbird Place', 'lrosendale0@apache.org'),
@@ -165,6 +165,8 @@ INSERT INTO horarios (Horario_ID,Dia_de_la_semana,Hora_inicio,Hora_finalizacion,
 (10,"Martes",'07:30:00','12:00:00',3),
 (11,"Jueves",'07:30:00','12:00:00',3);
 
+
+
 INSERT INTO curso (Curso_ID,Materia_ID,Aula_ID,Profesor_ID,Cuatrimestre_ID) VALUES
 (1,1,10,5,1),
 (2,2,1,9,1),
@@ -209,5 +211,16 @@ INSERT INTO inscripciones_cursada (Inscripcion_ID,Estudiante_ID,Curso_ID) VALUES
 (151,11,8),(152,12,8),(153,13,8),(154,14,8),(155,15,8),
 (156,16,8),(157,17,8),(158,18,8),(159,19,8),(160,20,8);
 
-
-
+INSERT INTO horarios (Horario_ID,Dia_de_la_semana,Hora_inicio,Hora_finalizacion,MATERIA_ID) VALUES
+(12,"Lunes",'08:00:00','13:00:00',17),
+(13,"Miercoles",'08:00:00','13:00:00',17),
+(14,"Lunes",'08:00:00','13:00:00',5),
+(15,"Viernes",'18:00:00','23:00:00',5),
+(16,"Jueves",'19:00:00','23:00:00',19),
+(17,"Jueves",'08:00:00','10:00:00',8),
+(18,"Miercoles",'08:00:00','11:00:00',20),
+(19,"Lunes",'08:00:00','13:00:00',6),
+(20,"Viernes",'08:00:00','13:00:00',6),
+(21,"Lunes",'19:00:00','23:00:00',18),
+(22,"Martes",'15:00:00','18:00:00',7),
+(23,"Miercoles",'15:00:00','18:00:00',7);

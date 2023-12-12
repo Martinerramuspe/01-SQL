@@ -19,10 +19,13 @@ SELECT *
 FROM materias
 WHERE nivel = 6 AND Departamento_ID IN (1, 3);
 
+select*
+from departamentos;
+select*
 
 
 select* 
-from materias;
+from estudiantes;
 
 select*
 from materias

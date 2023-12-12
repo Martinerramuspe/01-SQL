@@ -67,8 +67,6 @@ CREATE TABLE IF NOT EXISTS `FACULTAD`.`ESTUDIANTES` (
   `Fecha_nacimiento` DATE NOT NULL,
   `Direccion` VARCHAR(45) NOT NULL,
   `Correo` VARCHAR(45) NOT NULL,
-  `Departamento_ID` INT NOT NULL,
-  FOREIGN KEY (`Departamento_ID`) REFERENCES `FACULTAD`.`DEPARTAMENTOS` (`Departamento_ID`),
   PRIMARY KEY (`Estudiante_ID`),
   UNIQUE INDEX (`Correo`)
   );
@@ -112,6 +110,7 @@ CREATE TABLE IF NOT EXISTS `FACULTAD`.`INASISTENCIAS` (
   PRIMARY KEY (`Inasistencias_ID`),
   FOREIGN KEY (`Inscripcion_ID`) REFERENCES `FACULTAD`.`INSCRIPCIONES_CURSADA` (`Inscripcion_ID`)
   );
+
   
   
 -- CREACION DE AUDITORIAS________________________________________________________________
