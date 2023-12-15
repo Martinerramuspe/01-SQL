@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS  `FACULTAD`.`MATERIAS` (
 `Asignatura` VARCHAR(45) NOT NULL,
 `Carga_horaria` INT NOT NULL,
 `Cursadas_necesarias` VARCHAR(45) NOT NULL,
+`N°_clases` INT NOT NULL,
 PRIMARY KEY (`Materia_ID`),
 FOREIGN KEY (`Departamento_ID`) REFERENCES `FACULTAD`.`DEPARTAMENTOS` (`Departamento_ID`),
 FOREIGN KEY (`Periodo_cursada_ID`) REFERENCES `FACULTAD`.`Periodo_cursada` (`Periodo_cursada_ID`)
