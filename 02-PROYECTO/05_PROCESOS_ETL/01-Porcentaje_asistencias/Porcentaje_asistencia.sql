@@ -1,5 +1,6 @@
 use facultad;
-
+SELECT *
+FROM porcentaje_asistencias;
 SELECT estudiantes.Estudiante_ID, estudiantes.nombre, estudiantes.apellido,inscripciones_cursada.Inscripcion_ID,Materias.asignatura,materias.N°_clases,inasistencias.N°_clases_inasistidas
 FROM inasistencias
 INNER JOIN inscripciones_cursada ON inscripciones_cursada.Inscripcion_ID = inasistencias.Inscripcion_ID
