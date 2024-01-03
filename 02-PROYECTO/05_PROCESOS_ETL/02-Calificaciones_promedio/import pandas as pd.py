@@ -15,23 +15,42 @@ query = """
     INNER JOIN FACULTAD.MATERIAS M ON C.Materia_ID = M.Materia_ID
     INNER JOIN FACULTAD.CALIFICACIONES Cal ON I.Inscripcion_ID = Cal.Inscripcion_ID
 """
-
 calificaciones_df = pd.read_sql_query(query, engine)
-
-# Definir la función para calcular el promedio con condición
-def calcular_promedio(row):
-    # Si aprobo evaluacion n°1, evaluacion n°2 y tambien la practica integradora
-    if row['Evaluacion_N°1'] > 6 and row['Evaluacion_N°2'] > 6 and row['Practica_integradora'] == 1:
-        return row[['Evaluacion_N°1', 'Evaluacion_N°2']].mean()
-    elif row['Evaluacion_N°1'] <6 and row['Evaluacion_N°2'] > 6 and row['Recuperatorio_N°1'] > 6:
-        return
+# Creamos primera funcion
+def calcular_promedio(fila):
+    # Si  aprueba evaluación 1, evaluación 2 y la práctica integradora
+    if fila['Evaluacion_N°1'] > 6 and fila['Evaluacion_N°2'] > 6 and fila['Practica_integradora'] == 1:
+        return fila[['Evaluacion_N°1', 'Evaluacion_N°2']].mean()
+    # Si no  aprueba evaluación 1, pero aprueba evaluación 2 y recuperatorio 1
+    elif fila['Evaluacion_N°1'] < 6 and fila['Evaluacion_N°2'] > 6 and fila['Recuperatorio_N°1'] > 6:
+        return fila[['Evaluacion_N°2','Recuperatorio_N°1']].mean()
+    # Si aprueba evaluación 1, pero no aprueba evaluación 2 y aprueba recuperatorio 2
+    elif fila['Evaluacion_N°1'] > 6 and fila['Evaluacion_N°2'] < 6 and fila['Recuperatorio_N°2'] > 6:
+        return fila[['Evaluacion_N°1','Recuperatorio_N°2']].mean()
+    # Si no aprueba evaluación 1, no aprueba evaluación 2, pero aprueba recuperatorio 1 y recuperatorio 2
+    elif fila['Evaluacion_N°1'] < 6 and fila['Evaluacion_N°2'] < 6 and fila['Recuperatorio_N°1'] > 6 and fila['Recuperatorio_N°2'] > 6:
+        return fila[['Recuperatorio_N°1','Recuperatorio_N°2']].mean()
+    # Si no aprueba evaluación 1, no aprueba evaluación 2 y recuperatorio 1 o recuperatorio 2 tienen notas bajas
     else:
-        return row[['Recuperatorio_N°1', 'Recuperatorio_N°2']].mean()
-# Aplicar la función con apply
-calificaciones_df['Promedio_Calificaciones'] = calificaciones_df.apply(calcular_promedio, axis=1)
+        return fila[['Recuperatorio_N°1', 'Recuperatorio_N°2']].mean()
 
+# Aplicamos la primera funcion 
+calificaciones_df['Promedio_Calificaciones'] = calificaciones_df.apply(calcular_promedio, axis=1)
+# Creamos segunda funcion
+def Condicion (fila):
+    if fila['Promedio_Calificaciones'] >6:
+        return "PROMOCIONADO"
+    elif fila['Promedio_Calificaciones'] >3 and fila['Promedio_Calificaciones'] <7:
+        return "REGULAR"
+    else:
+        return "LIBRE"
+
+# Aplicamos segunda funcion al df
+calificaciones_df['Condicion_final'] = calificaciones_df.apply(Condicion, axis=1)   
 # Crear tabla nueva o actualizar existente con los resultados transformados
 calificaciones_df.to_sql('PROMEDIO_CALIFICACIONES', engine, if_exists='replace', index=False)
+
+calificaciones_df["Promedio_Calificaciones"]
 
 # Cerrar la conexión
 engine.dispose()
