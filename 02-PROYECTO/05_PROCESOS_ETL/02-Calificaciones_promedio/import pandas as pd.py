@@ -46,12 +46,16 @@ def Condicion (fila):
         return "LIBRE"
 
 # Aplicamos segunda funcion al df
-calificaciones_df['Condicion_final'] = calificaciones_df.apply(Condicion, axis=1)   
-# Crear tabla nueva o actualizar existente con los resultados transformados
-calificaciones_df.to_sql('PROMEDIO_CALIFICACIONES', engine, if_exists='replace', index=False)
+calificaciones_df['Condicion_final'] = calificaciones_df.apply(Condicion, axis=1)
+df= calificaciones_df[['Estudiante_ID','nombre','apellido','Inscripcion_ID','asignatura','Evaluacion_N°1','Evaluacion_N°2','Recuperatorio_N°1','Recuperatorio_N°2','Practica_integradora','Promedio_Calificaciones','Condicion_final']]
+# Crear tabla nueva o actualizamos la existente con replace.
+df.to_sql('Condicion_alumnos', engine, if_exists='replace', index=False)
 
-calificaciones_df["Promedio_Calificaciones"]
+#Creamos dataframe con ...... seguir con esto despues
+df1 = df.groupby(['Inscripcion_ID'])['Promedio_Calificaciones'].mean().reset_index()
+df1= pd.DataFrame(df1)
 
+df1.index
 # Cerrar la conexión
 engine.dispose()
 
