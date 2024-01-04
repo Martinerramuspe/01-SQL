@@ -1,11 +1,11 @@
-# 
+# ETL N°2
 import pandas as pd
 from sqlalchemy import create_engine
 
-# Configuración de la conexión a la base de datos
-engine = create_engine('mysql+pymysql://root:administrador@localhost/facultad')
+# Conectamos a la base de datos
+coneccion = create_engine('mysql+pymysql://root:administrador@localhost/facultad')
 
-# Extraer datos de la tabla de calificaciones con información adicional
+# CONSULTA
 query = """
     SELECT C.Curso_ID, I.Inscripcion_ID, E.Estudiante_ID, E.nombre, E.apellido, M.asignatura, 
         Cal.Evaluacion_N°1, Cal.Evaluacion_N°2, Cal.Recuperatorio_N°1, Cal.Recuperatorio_N°2, Cal.Practica_integradora
@@ -15,8 +15,10 @@ query = """
     INNER JOIN FACULTAD.MATERIAS M ON C.Materia_ID = M.Materia_ID
     INNER JOIN FACULTAD.CALIFICACIONES Cal ON I.Inscripcion_ID = Cal.Inscripcion_ID
 """
-calificaciones_df = pd.read_sql_query(query, engine)
-# Creamos primera funcion
+# Extraemos la consulta en un df 
+calificaciones_df = pd.read_sql_query(query, coneccion)
+
+# Creamos funcion_N°1
 def calcular_promedio(fila):
     # Si  aprueba evaluación 1, evaluación 2 y la práctica integradora
     if fila['Evaluacion_N°1'] > 6 and fila['Evaluacion_N°2'] > 6 and fila['Practica_integradora'] == 1:
@@ -34,9 +36,10 @@ def calcular_promedio(fila):
     else:
         return fila[['Recuperatorio_N°1', 'Recuperatorio_N°2']].mean()
 
-# Aplicamos la primera funcion 
+# Aplicamos funcion_N°1 
 calificaciones_df['Promedio_Calificaciones'] = calificaciones_df.apply(calcular_promedio, axis=1)
-# Creamos segunda funcion
+
+# Creamos funcion_N°2
 def Condicion (fila):
     if fila['Promedio_Calificaciones'] >6:
         return "PROMOCIONADO"
@@ -45,18 +48,19 @@ def Condicion (fila):
     else:
         return "LIBRE"
 
-# Aplicamos segunda funcion al df
+# Aplicamos funcion_N°2, para crear tabla
 calificaciones_df['Condicion_final'] = calificaciones_df.apply(Condicion, axis=1)
 df= calificaciones_df[['Estudiante_ID','nombre','apellido','Inscripcion_ID','asignatura','Evaluacion_N°1','Evaluacion_N°2','Recuperatorio_N°1','Recuperatorio_N°2','Practica_integradora','Promedio_Calificaciones','Condicion_final']]
+
 # Crear tabla nueva o actualizamos la existente con replace.
-df.to_sql('Condicion_alumnos', engine, if_exists='replace', index=False)
+df.to_sql('Condicion_alumnos', coneccion, if_exists='replace', index=False)
 
-#Creamos dataframe con ...... seguir con esto despues
-df1 = df.groupby(['Inscripcion_ID'])['Promedio_Calificaciones'].mean().reset_index()
-df1= pd.DataFrame(df1)
+# Creamos tabla con promedio del total de las materias por alumno.
+df1 = df.groupby(['Estudiante_ID'])['Promedio_Calificaciones'].mean().reset_index()
 
-df1.index
+# Creamos tabla con promedio del total de las materias por alumno O actualizamos la existente con replace. 
+df1.to_sql('Promedio_total_materias', coneccion, if_exists='replace', index=False)
 # Cerrar la conexión
-engine.dispose()
+coneccion.dispose()
 
 
